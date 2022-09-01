@@ -1,0 +1,18 @@
+ <%@include file="adminHeader.jsp" %>
+<%@include file="../footer.jsp" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>welcome page</title>
+<style>
+h1
+{
+color: black;
+text-align: center;
+font-size: 80px;
+}</style>
+</head>
+<body>
+<h1>welcome to Admin Section!</h1>
+</body>
+</html>
