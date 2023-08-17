@@ -9,8 +9,12 @@
     <!--Header-->
     <br>
     <div class="topnav sticky">
-   <%String email=session.getAttribute("email").toString(); %>
-            <center><h2>add it,bit by bit :)</h2></center>
+   
+            <element>
+            	<center>
+            		<h2 class="two">Welcome Back Admin</h2>
+            	</center>
+            </element>
             <a href="addNewProduct.jsp">Add New Product <i class='fas fa-plus-square'></i></a>
             <a href="allProductEditProduct.jsp">All Products & Edit Products <i class='fab fa-elementor'></i></a>
             <a href="messagesReceived.jsp">Messages Received <i class='fas fa-comment-alt'></i></a>

@@ -1,7 +1,7 @@
-<%@page import="db.ConnectionProvider" %>
+<%@page import="com.connection.ConnectionProvider" %>
 <%@page import="java.sql.*" %>
-<%@include file="header.jsp" %>
-<%@include file="footer.jsp" %>
+<%@include file="header.jsp"%>
+<%@include file="footer.jsp"%>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -21,39 +21,46 @@
         </thead>
         <tbody>
 <%
-	int z=0;	
+int flag = 0;
 try{
-		String search=request.getParameter("search");
-		Connection conn=ConnectionProvider.getConn();
-		Statement st=conn.createStatement();
-		ResultSet rs=st.executeQuery("select * from product where name like '%"+search+"%' or category like '%"+search+"%' and active='yes'");
-		while(rs.next()){
-		z=1;
+	String search = request.getParameter("search");
+	
+	Connection connection = ConnectionProvider.getConnection();
+	Statement statement =connection.createStatement();
+	ResultSet rs = statement.executeQuery("select * from product where name like '%"+search+"%' or category like '"+search+"' and active='Yes'");
+	
+	while(rs.next()){
+		flag = 1;
 %>
           <tr>
-            <td><%=rs.getString(1) %></td>
-            <td><%=rs.getString(2) %><</td>
+          <td><%=rs.getString(1) %></td>
+            <td><%=rs.getString(2) %></td>
             <td><%=rs.getString(3) %></td>
             <td><i class="fa fa-inr"></i><%=rs.getString(4) %></td>
-            <td><a href="addTocartAction.jsp?id=<%=rs.getString(1) %>">Add to cart <i class='fas fa-cart-plus'></i></a></td>
+            <td><a href="AddToCartAction.jsp?id=<%=rs.getString(1) %>">Add to cart <i class='fas fa-cart-plus'></i></a></td>
           </tr>
-         
          <%
-         }}
-         catch(Exception e){
-        	 System.out.println(e);
-         }%>
-         
+	}	
+}
+catch(Exception e){
+	System.out.println(e);
+	
+}
+         %>
         </tbody>
       </table>
-	<%if(z==0){ %>      	
-	<h1 style="color:white; text-align: center;">Product not found :(</h1>
+  	<%if(flag == 0){ %>    	
+	<script type="text/javascript">
+	
+	alert("No data found !");
+	window.location.href = "home.jsp"; 
+	</script>
 	<%} %>
       <br>
       <br>
       <br>
       <div class="footer">
-          <p>All right reserved by FirstBit</p>
+          <p>All right reserved by BTech Days</p>
       </div>
 
 </body>

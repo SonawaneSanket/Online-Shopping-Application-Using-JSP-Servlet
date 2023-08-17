@@ -1,39 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="css/NewFile.css">
-<title>Login Page</title>
+<link rel="stylesheet" href="css/signup-style.css">
+<title>Login</title>
 </head>
 <body>
-<div id='container'>
-  <div class='signup'>
-	<form action="LoginAction.jsp" method="post">
-		<input type="email" name="email" placeholder="enter email Id" required>
-		<input type="password" name="password" placeholder="enter password" required>
-		<input type="submit" value="Login">
-	</form>
-     
-      <h3><a href="signup.jsp">SignUp</a></h3>
-       <h3><a href="forgotPassword.jsp">Forgot Password?</a></h3>
+	<div id='container'>
+		<div class='signup'>
 
-  </div>
-  <div class='whysignLogin'>
-    <h2>Welcome to AnimeHub.in</h2>
+			<form action="LoginAction.jsp" method="post">
+				<input type="email" name="email" placeholder="Enter Email"
+					required="required"> <input type="password" name="password"
+					placeholder="Enter Password" required="required"> <input
+					type="submit" value="Login">
+			</form>
+			<h2>
+				<a href="signup.jsp">SignUp</a>
+			</h2>
+			<h2>
+				<a href="forgotPassword.jsp">Forgot Password?</a>
+			</h2>
+		</div>
+		<div class='whysignLogin'>
 
-  <%
-  String msg=request.getParameter("msg");
-  if("notexist".equals(msg)){
-	  %>
-	  <h3>Incorrect UserName or Password</h3>
-  <%}%>
-  <%
-  	if("invalid".equals(msg)){
-  %>
-<h3>Some thing Went Wrong! Try Again !</h3>
-<%} %>
+			<%
+			String msg = request.getParameter("msg");
+			if ("notexist".equals(msg)) {
+			%>
+			<script>
+				alert("Incorrect username or password. Please try again.");
+				window.location.href = "login.jsp"; // redirect to login page
+			</script>
+			<%
+			}
+			%>
 
-  </div>	
-</div>
+			<%
+			if ("invalid".equals(msg)) {
+			%>
+			<script type="text/javascript">
+				alert("No user found please Sign Up !");
+				window.location.href = "signup.jsp";
+			</script>
+			<%
+			}
+			%>
+			<h3>DevMart</h3>
+			<p class="loginpara">Login to Access Your Dashboard</p>
+		</div>
+	</div>
 
 </body>
 </html>

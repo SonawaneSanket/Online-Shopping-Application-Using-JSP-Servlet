@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="css/NewFile.css">
-<title>SignUp</title>
+<link rel="stylesheet" href="css/signup-style.css">
+<title>Signup</title>
 </head>
 <body>
 <div id='container'>
   <div class='signup'>
-    <form action="signupAction.jsp" method="post">
+    
+        <form action="SignUpAction.jsp" method="post">
    <input type="text" name="name" placeholder="Enter name" required>
     	<input type="email" name="email" placeholder="Enter email" required>
     	<input type="number" name="number" placeholder="Enter Mobile Number" required>
@@ -21,32 +22,32 @@
     	</select>
     	<input type="text" name="answer" placeholder="Enter Your Answer" required>
     	<input type="password" name="password" placeholder="Enter Password" required>
-    	<input type="submit" value="signUp">	
+    	<input type="submit" value="Sign Up">	
     </form>
-    	
-    	 	
-      <h3><a href="login.jsp">Login</a></h3>
+      <h2>Already Have Account?</h2> <h2><a href="login.jsp">Login</a></h2>
   </div>
   <div class='whysign'>
 <%
-String msg=request.getParameter("msg");
-
-	if("valid".equals(msg))
-	{
- %>
-<h1>Successfully Updated</h1>
-<%
-}
+String msg = request.getParameter("msg");
+if("valid".equals(msg)){
 %>
-
+<script >
+	alert('Thank you for signing up');
+	window.location.href = "login.jsp";
+</script>
 <%
-if("invalid".equals(msg))
-{
+} %>
+<%
+if("invalid".equals(msg)){
 %>
-<h2>Some thing Went Wrong! Try Again !</h2>
-<%} %>
+<script> 
+alert('Something Went Wrong!');
+</script>
+<%}
 
-    <h2>Welcome to AnimeHub.com</h2>
+%>
+    <h3>DevMarT</h3>
+    <p>Discover a wide range of products from top brands and trusted sellers on. Enjoy a seamless shopping experience with fast and reliable shipping and dedicated customer service.</p>
   </div>
 </div>
 

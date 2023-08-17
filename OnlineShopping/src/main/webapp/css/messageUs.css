@@ -1,53 +1,50 @@
 .input-style {
-  width: 60%;
-  padding: 12px 20px;
-  margin-left:20%;
-  box-sizing: border-box;
-  border: none;
-  background-color:white;
-  color: black;
-  font-size: 16px;
+	width: 60%;
+	padding: 12px 20px;
+	margin-left: 20%;
+	box-sizing: border-box;
+	border: none;
+	background-color: white;
+	color: black;
+	font-size: 16px;
 }
 
-input[type=text]:focus, textarea:focus,button:focus{
-  outline: 4px solid orange;
-  background-color:rgb(224, 255, 219);     /* oranges! yey */
+input[type=text]:focus, textarea:focus, button:focus {
+	outline: 4px solid #7CB9E8;
+	background-color: rgb(224, 255, 219);
 }
 
-textarea
-{
+textarea {
 	height: 250px;
 	font-size: 16px;
 }
 
 .button {
-  background-color: white; /* Green */
-  border: none;
-  color: black;
-  padding: 12px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  margin: 4px 2px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  margin-left:20%;
-  font-size: 16px;
+	background-color: #ADD8E6; /* Green */
+	border: none;
+	color: #002147;
+	padding: 12px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 14px;
+	margin: 4px 2px;
+	transition-duration: 0.4s;
+	cursor: pointer;
+	margin-left: 20%;
+	font-size: 16px;
 }
 
 .button:hover {
-  background-color: #555555;
-  color: white;
+	background-color: #555555;
+	color: white;
 }
 
-hr
-{
+hr {
 	width: 60%
 }
 
-h3
-{
+h3 {
 	text-align: center;
 	color: white;
 }

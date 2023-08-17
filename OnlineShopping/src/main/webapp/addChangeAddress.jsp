@@ -1,59 +1,87 @@
-<%@page import="db.ConnectionProvider" %>
-<%@page import="java.sql.*" %>
-<%@include file="changeDetailsHeader.jsp" %>
-<%@include file="footer.jsp" %>
+<%@page import="com.connection.ConnectionProvider"%>
+<%@page import="java.sql.*"%>
+<%@include file="changeDetailsHeader.jsp"%>
+<%@include file="footer.jsp"%>
+
 <html>
 <head>
 <link rel="stylesheet" href="css/changeDetails.css">
 <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-<title>Update address details</title>
+<title>Add and Edit Address Details</title>
 </head>
 <body>
-<% 
-String msg=request.getParameter("msg");
-if("valid".equals(msg)){
-%>
-<h3 class="alert">Address Successfully Updated !</h3>
-<%} %>
-<%
-if("invalid".equals(msg)){
-%>
-<h3 class="alert">Some thing Went Wrong! Try Again!</h3>
-<%} %>
+	<%
+	String msg = request.getParameter("msg");
 
-<%
-try{
-	Connection conn=ConnectionProvider.getConn();
-	Statement st=conn.createStatement();
-	ResultSet rs=st.executeQuery("select * from users where email='"+email+"'");
-	while(rs.next()){
+	if ("valid".equals(msg)) {
+	%>
 
-%>
-<form action="addChangeAddressAction.jsp" method="post">
-<h3>Enter Address</h3>
- <input class="input-style" type="text" name="address" value="<%= rs.getString(7)%>" placeholder="Enter address" required="required">
- <hr>
- <h3>Enter city</h3>
- <input class="input-style" type="text" name="city" value="<%= rs.getString(8)%>" placeholder="Enter city" required="required">
- 
-<hr>
-<h3>Enter State</h3>
- <input class="input-style" type="text" name="state" value="<%= rs.getString(9)%>" placeholder="Enter state" required="required">
+	<script>
 
-<hr>
-<h3>Enter country</h3>
- <input class="input-style" type="text" name="country" value="<%= rs.getString(10)%>" placeholder="Enter country" required="required">
+		alert("Address Updated");
+		window.location.href = "addChangeAddress.jsp"; // redirect to login page
+	</script>
 
-<hr>
-<button class="button" type="submit">Save <i class='far fa-arrow-alt-circle-right'></i></button> 
-</form><%
-}
-}
-catch(Exception e){
+	<%
+	}
+	%>
+
+	<%
+	if ("invalid".equals(msg)) {
+	%>
+
+	<script>
+
+		alert("Something Went Wrong !");
+		window.location.href = "addChangeAddress.jsp"; // redirect to login page
+	</script>
+	<%
+	}
+	%>
+
+	<%
+	try {
+		Connection connection = ConnectionProvider.getConnection();
+		Statement statement = connection.createStatement();
+
+		ResultSet resultSet = statement.executeQuery("select * from users where email='" + email + "'");
+
+		while (resultSet.next()) {
+	%>
+
+	<form action="addChangeAddressAction.jsp" method="post">
+		<h3>Enter Address</h3>
+		<input class="input-style" type="text" name="address"
+			value="<%=resultSet.getString(7)%>" placeholder="Enter Address"
+			required="required">
+		<hr>
+		<h3>Enter City</h3>
+		<input class="input-style" type="text" name="city"
+			value="<%=resultSet.getString(8)%>" placeholder="Enter City"
+			required="required">
+		<hr>
+		<h3>Enter State</h3>
+		<input class="input-style" type="text" name="state"
+			value="<%=resultSet.getString(9)%>" placeholder="Enter State"
+			required="required">
+		<hr>
+		<h3>Enter Country</h3>
+		<input class="input-style" type="text" name="country"
+			value="<%=resultSet.getString(10)%>" placeholder="Enter Country"
+			required="required">
+		<hr>
+		<button class="button" type="submit">
+			Save <i class='far fa-arrow-alt-circle-right'></i>
+		</button>
+	</form>
+	<%
+	}
+	} catch (Exception e) {
 	System.out.println(e);
-}
-%>
-
+	}
+	%>
 </body>
-<br><br><br><br>
+<br>
+<br>
+<br>
 </html>

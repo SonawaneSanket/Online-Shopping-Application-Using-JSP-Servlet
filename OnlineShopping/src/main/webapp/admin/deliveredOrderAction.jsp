@@ -4,7 +4,7 @@
 <%
 String id = request.getParameter("id");
 String email = request.getParameter("email");
-String status = "cancel";
+String status = "Delivered";
 
 try{
 	
@@ -12,7 +12,7 @@ try{
 	Statement statement = connection.createStatement();
 	
 	statement.executeUpdate("update cart set status='"+status+"' where product_id='"+id+"' and email='"+email+"' and address is not NULL");
-	response.sendRedirect("ordersReceived.jsp?msg=cancel");
+	response.sendRedirect("ordersReceived.jsp?msg=delivered");
 
 }
 catch(Exception e){
